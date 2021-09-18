@@ -1,9 +1,11 @@
 // import AuthCheck from "../Pages/Authentication/AuthCheck";
 // import Login from "../Pages/Authentication/Login";
 // import Register from "../Pages/Authentication/Register";
+import Session from "../pages/Authentication/session";
 import Dashboard from "../pages/Dashboard";
-import Logger from "../pages/Logger";
-
+import LogData from "../pages/Data";
+import Enumerators from "../pages/Enumerators";
+import Teams from "../pages/Teams";
 
 const routes = [
     {
@@ -16,9 +18,27 @@ const routes = [
         roles: [3, 2, 1]
     },
     {
-        name: 'Logger',
-        component: Logger,
-        url: '/logger',
+        name: 'Enumerators',
+        component: Enumerators,
+        url: '/enumerator',
+        icon: 'tv-2',
+        color: 'info',
+        sidebar: true,
+        roles: [3, 2, 1]
+    },
+    {
+        name: 'Teams',
+        component: Teams,
+        url: '/teams',
+        icon: 'tv-2',
+        color: 'primary',
+        sidebar: true,
+        roles: [3, 2, 1]
+    },
+    {
+        name: 'Clusters',
+        component: LogData,
+        url: '/clusters',
         icon: 'tv-2',
         color: 'primary',
         sidebar: true,
@@ -62,11 +82,11 @@ const misc = [
 ]
 
 const openRoutes = [
-    // {
-    //     name: 'login',
-    //     url: '/sessioncheck',
-    //     component: AuthCheck,
-    // },
+    {
+        name: 'session',
+        url: '/sessioncheck',
+        component: Session,
+    },
     // {
     //     name: 'Register',
     //     url: '/register',
