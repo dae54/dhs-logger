@@ -26,6 +26,13 @@ export async function getTeamVsClusters() {
         .catch(error => { throw parseError(error) })
 }
 
+export async function getTeamClusterInfo(teamNumber, payload) {
+    return await axios.get(`/logger/getTeamClusterInfo/${teamNumber}`, { params: payload })
+        .then(response => parseResponse(response))
+        .catch(error => { throw parseError(error) })
+}
+
+
 export async function deleteOne(clusterId) {
     return await axios.delete(`/logger/${clusterId}`)
         .then(response => parseResponse(response))

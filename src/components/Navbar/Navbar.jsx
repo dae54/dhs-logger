@@ -12,7 +12,7 @@ export default function Navbar() {
 
     // const hist = useHistory()
     // console.log(state)
-    let themecolor = 'gradient-gree';
+    let themecolor = 'gradient-green';
     // console.log(hist.location.pathname)
     // switch (hist.location.pathname) {
     //     case '/':

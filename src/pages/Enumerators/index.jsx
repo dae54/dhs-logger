@@ -70,7 +70,12 @@ export default function Enumerators() {
                             isLoading={status.code === 0}
                             title='Registered Enumerators'
                             columns={[
-                                { title: 'Full Name', render: (data) => `${data.firstName} ${data.middleName} ${data.lastName}` },
+                                {
+                                    title: 'Full Name', render: (data) => `${data.firstName} ${data.middleName} ${data.lastName}`,
+                                    customFilterAndSearch: (term, rowData) => {
+                                        return (`${rowData.firstName} ${rowData.middleName} ${rowData.lastName}`).indexOf(term) != -1
+                                    }
+                                },
                                 { title: 'Phone Number', field: 'phoneNumber', emptyValue: 'no val' },
                                 { title: 'Role', field: 'role', },
                             ]}

@@ -22,7 +22,7 @@ export default function NewTeam({ show, setShow, setEnumerators }) {
     const lastNameRef = useRef()
     const middleNameRef = useRef()
     const phoneNumberRef = useRef()
-    // const emailRef = useRef()
+    const formRef = useRef()
     const roleRef = useRef()
 
     async function addRecord(e) {
@@ -41,6 +41,8 @@ export default function NewTeam({ show, setShow, setEnumerators }) {
             console.log(data)
             setEnumerators(enumerators => [data].concat(enumerators))
             setStatus({ code: 1, message: 'Successfully Added' })
+            formRef.current.reset()
+            firstNameRef.current.focus()
         }).catch(error => {
             console.log(error)
             setStatus({ code: 2, message: error.message })
@@ -62,7 +64,7 @@ export default function NewTeam({ show, setShow, setEnumerators }) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <form onSubmit={addRecord} className=''>
+                <form onSubmit={addRecord} ref={formRef} className=''>
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label >First Name:</label>

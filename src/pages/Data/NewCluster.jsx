@@ -49,7 +49,8 @@ export default function NewCluster({ show, setShow }) {
             surveyDate: new Date(surveyDateRef.current.value),
             expectedHouseHolds: expectedHouseHoldsRef.current.value,
             listedHouseholds: listedHouseHoldsRef.current.value,
-            teamNumber: teamNumberRef.current.value,
+            team: teamNumberRef.current.value,
+            // teamNumber: teamNumberRef.current.value,
             gps: {
                 latitude: latRef.current.value,
                 longitude: lngRef.current.value,

@@ -71,6 +71,10 @@ export default function NewTeam({ show, setShow, updateTeams }) {
         getEnumerators()
     }, [])
 
+    function renderFullName(names) {
+        return `${names.firstName} ${names.middleName} ${names.lastName}`
+    }
+
     return (
         <Modal
             show={show}
@@ -93,25 +97,13 @@ export default function NewTeam({ show, setShow, updateTeams }) {
                             <input type="number" ref={teamNumberRef} class="form-control" />
                         </div>
                         <h4 className='form-group col-md-12 my-1'>Team Members</h4>
-
-                        <div className='form-group col-md-4'>
-                            <label >Supervisor:</label>
-                            <select className='form-control' ref={supervisorRef}>
-                                <option value={0}>Select Enumerator </option>
-                                {enumerators.map(enumerator => {
-                                    return (
-                                        <option value={enumerator._id}>{enumerator.firstName}</option>
-                                    )
-                                })}
-                            </select>
-                        </div>
                         <div className='form-group col-md-4'>
                             <label >Member 1:</label>
                             <select className='form-control' ref={member1Ref}>
                                 <option value={0}>Select Enumerator </option>
                                 {enumerators.map(enumerator => {
                                     return (
-                                        <option value={enumerator._id}>{enumerator.firstName}</option>
+                                        <option value={enumerator._id}>{renderFullName(enumerator)}</option>
                                     )
                                 })}
                             </select>
@@ -122,7 +114,18 @@ export default function NewTeam({ show, setShow, updateTeams }) {
                                 <option value={0}>Select Enumerator </option>
                                 {enumerators.map(enumerator => {
                                     return (
-                                        <option value={enumerator._id}>{enumerator.firstName}</option>
+                                        <option value={enumerator._id}>{renderFullName(enumerator)}</option>
+                                    )
+                                })}
+                            </select>
+                        </div>
+                        <div className='form-group col-md-4'>
+                            <label >Supervisor:</label>
+                            <select className='form-control' ref={supervisorRef}>
+                                <option value={0}>Select Enumerator </option>
+                                {enumerators.map(enumerator => {
+                                    return (
+                                        <option value={enumerator._id}>{renderFullName(enumerator)}</option>
                                     )
                                 })}
                             </select>

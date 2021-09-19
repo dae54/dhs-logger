@@ -17,8 +17,10 @@ export default function LogData() {
             .then(data => {
                 // console.log(data)
                 console.log('here')
+                console.table(data)
                 let fin = data.map(item => {
                     // console.log(item)
+                    // return { ...item, teamNumber: item.team && item.team._id }
                     return { ...item, teamNumber: item.team && item.team._id }
                 })
                 // console.log('************************************')
@@ -108,7 +110,8 @@ export default function LogData() {
                                 // { title: 'Team Number', field: 'teamNumber', },
                                 {
                                     title: 'Team', field: 'teamNumber',
-                                    lookup: teams
+                                    lookup: teams,
+                                    // editable: false
                                 },
                                 { title: 'Expected Households', field: 'expectedHouseHolds', },
                                 { title: 'Listed Households', field: 'listedHouseholds', },
