@@ -3,12 +3,12 @@ import { NavLink } from 'react-router-dom'
 // import menu, { misc as op } from './index'
 import menu, { misc } from '../routes'
 // import logo from '../../assets/images/blue.png'
-import logo from '../../assets/logos/change supply2.png'
 
-import { AuthContext } from '../../Context/AuthContext'
+import { AuthContext, useAuth } from '../../Context/AuthContext'
 
 export default function Sidebar(props) {
     const { state } = React.useContext(AuthContext)
+    const { authData } = useAuth()
 
     return (
         <React.Fragment>
@@ -16,7 +16,7 @@ export default function Sidebar(props) {
                 <div className="scrollbar-inner">
                     <div className="sidenav-header  d-flex  align-items-center">
                         <NavLink className="navbar-brand" to="/">
-                            <img src={logo} className="navbar-brand-img" alt="..." />
+                            DHS-LOGGER
                         </NavLink>
                         <div className=" ml-auto ">
                             {/* <!-- Sidenav toggler --> d-none*/}
@@ -37,7 +37,7 @@ export default function Sidebar(props) {
                                     return (
                                         route.sidebar &&
                                         route.roles &&
-                                        route.roles.includes(state.currentUser.role_id) &&
+                                        route.roles.includes(authData.role) &&
                                         <SidebarComp item={route} index={index} key={route.url} />
                                     )
                                 })}

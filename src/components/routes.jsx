@@ -6,6 +6,7 @@ import Dashboard from "../pages/Dashboard";
 import LogData from "../pages/Data";
 import Enumerators from "../pages/Enumerators";
 import Teams from "../pages/Teams";
+import Users from "../pages/User";
 
 const routes = [
     {
@@ -15,7 +16,7 @@ const routes = [
         icon: 'tv-2',
         color: 'primary',
         sidebar: true,
-        roles: [3, 2, 1]
+        roles: [1, 2]
     },
     {
         name: 'Enumerators',
@@ -24,7 +25,7 @@ const routes = [
         icon: 'tv-2',
         color: 'info',
         sidebar: true,
-        roles: [3, 2, 1]
+        roles: [1]
     },
     {
         name: 'Teams',
@@ -33,7 +34,7 @@ const routes = [
         icon: 'tv-2',
         color: 'primary',
         sidebar: true,
-        roles: [3, 2, 1]
+        roles: [1]
     },
     {
         name: 'Clusters',
@@ -42,7 +43,16 @@ const routes = [
         icon: 'tv-2',
         color: 'primary',
         sidebar: true,
-        roles: [3, 2, 1]
+        roles: [1]
+    },
+    {
+        name: 'Users',
+        component: Users,
+        url: '/users',
+        icon: 'tv-2',
+        color: 'danger',
+        sidebar: true,
+        roles: [1]
     },
 ]
 

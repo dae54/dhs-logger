@@ -6,7 +6,8 @@ import {
     Switch
 } from "react-router-dom";
 import axios from 'axios'
-import { AuthContextProvider, AuthContext } from './Context/AuthContext'
+import { AuthProvider, useAuth } from './Context/AuthContext'
+
 import ProtectedRoutes from './pages';
 import { openRoutes } from './components/routes';
 
@@ -17,19 +18,20 @@ axios.defaults.timeout = 60000
 
 function App() {
     return (
-        <AuthContextProvider>
+        <AuthProvider>
             <BrowserRouter>
                 <PrivateRoute path='/' component={ProtectedRoutes} />
             </BrowserRouter>
-        </AuthContextProvider>
+        </AuthProvider>
     );
 }
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-    const { state } = React.useContext(AuthContext)
+    const { authData } = useAuth()
+    console.log(authData)
     return (
         <>
-            {!state.isAuthenticated &&
+            {!authData &&
                 <Switch>
                     {openRoutes.map((item, index) =>
                         <Route exact path={item.link} key={index} component={item.component} />
@@ -37,9 +39,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
                 </Switch>
             }
             <Route {...rest} render={(props) => (
-                state.isAuthenticated
+                authData
                     ? <Component {...props} />
-                    : <Redirect to='/sessioncheck' />
+                    : <Redirect to='/' />
             )} />
         </>
     )

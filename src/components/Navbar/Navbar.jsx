@@ -1,60 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { AuthContext } from '../../Context/AuthContext'
+import { AuthContext, useAuth } from '../../Context/AuthContext'
 // import axios from 'axios'
 import female from '../../assets/images/female.png'
 
 import BreadCrumb from './BreadCrumb'
 export default function Navbar() {
     const { state, dispatch } = React.useContext(AuthContext)
+    const { authData, signOut } = useAuth()
+
     let setIsAuthenticated = status => dispatch({ type: 'isAuthenticated', payload: status })
     let roleName = ''
 
     // const hist = useHistory()
     // console.log(state)
     let themecolor = 'gradient-green';
-    // console.log(hist.location.pathname)
-    // switch (hist.location.pathname) {
-    //     case '/':
-    //         themecolor = 'primary'
-    //         break;
-    //     case '/student':
-    //         themecolor = 'gradient-success'
-    //         break;
-    //     case '/payments':
-    //         themecolor = 'orange'
-    //         break;
-    //     case '/profile':
-    //         themecolor = 'gradient-default'
-    //         break;
-    //     case '/student/inbox':
-    //         themecolor = 'gradient-default'
-    //         break;
-    //     case '/inbox':
-    //         themecolor = 'gradient-default'
-    //         break;
-    //     case '/student/attendance':
-    //         themecolor = 'gradient-success'
-    //         break;
-    //     case '/student/homework':
-    //         themecolor = 'gradient-default'
-    //         break;
-    //     case '/guardian':
-    //         themecolor = 'gradient-green'
-    //         break;
-    //     default:
-    //         themecolor = 'default'
-    // }
 
-    switch (state.currentUser.role_id) {
-        case 3:
+    switch (authData.role) {
+        case 1:
             roleName = 'ADMIN'
             break;
         case 2:
-            roleName = 'PROVIDER'
-            break;
-        case 1:
-            roleName = 'REQUESTER'
+            roleName = 'MANAGER'
             break;
         default:
             break;
@@ -63,10 +30,11 @@ export default function Navbar() {
     function handleLogout() {
         let logout = window.confirm('are you sure you want to logout?')
         if (logout) {
-            sessionStorage.removeItem('token')
-            sessionStorage.removeItem('userDetails')
-            setIsAuthenticated(false)
+            // sessionStorage.removeItem('token')
+            // sessionStorage.removeItem('userDetails')
+            // setIsAuthenticated(false)
 
+            signOut()
             // axios.post('/logout', { token: sessionStorage.getItem('token') })
             //     .then(res => {
             //         console.log(res)
@@ -226,7 +194,7 @@ export default function Navbar() {
                                             {/* <span className="mb-0 text-sm  font-weight-bold">Sam Provider</span> */}
                                             {/* <span className="mb-0 text-sm  font-weight-bold">{`${state.currentUser.name.toUpperCase()}`}</span> */}
                                             <div className='mb-n5 mt-n4'>
-                                                <span>{`${state.currentUser.name.toUpperCase()}`}</span><br />
+                                                <span>{`${authData.firstName.toUpperCase()} ${authData.lastName.toUpperCase()}`}</span><br />
                                                 <small className='badge badge-primary px-3'>{roleName}</small>
                                             </div>
                                         </div>
