@@ -10,7 +10,8 @@ const getToken = () => {
 
 const instance = axios.create({
     // baseURL: 'https://stock-tracker-system.herokuapp.com/api/v1'
-    baseURL: 'http://localhost:5400/api/v1'
+    baseURL: 'https://dhs-logger-api.herokuapp.com/api/v1',
+    // baseURL: 'http://localhost:5400/api/v1'
 
 });
 
