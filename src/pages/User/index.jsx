@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import * as UsersAPI from '../../api/authAPI'
 import MaterialTable from 'material-table'
-import moment from 'moment'
 import NewUser from './newUser'
 
 export default function Users() {

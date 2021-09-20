@@ -1,10 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Modal, Button } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import * as LoggerAPI from '../../api/loggerAPI'
 import * as TeamsAPI from '../../api/teamsAPI'
 import ToastAlert from '../../components/ToastAlert'
-
-import decodeLocation from '../../services/decodeLocation'
 
 export default function NewCluster({ show, setShow }) {
     function handleClose() {
@@ -12,6 +10,7 @@ export default function NewCluster({ show, setShow }) {
     }
 
     const [showToast, setShowToast] = useState(false)
+    // eslint-disable-next-line 
     const [loading, setLoading] = useState(false)
     // code defn
     /**
@@ -113,7 +112,6 @@ export default function NewCluster({ show, setShow }) {
             show={show}
             size="xl"
             onHide={handleClose}
-            onHide={handleClose}
             backdrop="static"
             keyboard={false}
         >
@@ -199,7 +197,7 @@ export default function NewCluster({ show, setShow }) {
                             <button className='form-control btn btn-default px-5' type="button" onClick={getLocationAddress}>Decode</button>
                         </div>
 
-                        <h5 className='form-group col-md-12'></h5>
+                        <div className='form-group col-md-12'></div>
 
                         <div class="form-group col-md-2">
                             <label >Region:</label>

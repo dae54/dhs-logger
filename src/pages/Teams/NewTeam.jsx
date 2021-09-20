@@ -8,7 +8,7 @@ export default function NewTeam({ show, setShow, updateTeams }) {
     function handleClose() {
         setShow(false)
     }
-
+    // eslint-disable-next-line 
     const [loading, setLoading] = useState(false)
     // code defn
     /**
@@ -79,7 +79,6 @@ export default function NewTeam({ show, setShow, updateTeams }) {
         <Modal
             show={show}
             size="xl"
-            onHide={handleClose}
             onHide={handleClose}
             backdrop="static"
             keyboard={false}

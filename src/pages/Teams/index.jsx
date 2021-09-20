@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import * as TeamsAPI from '../../api/teamsAPI'
 import MaterialTable from 'material-table'
-import moment from 'moment'
 import NewTeam from './NewTeam'
 
 export default function Teams() {

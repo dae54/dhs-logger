@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import * as EnumeratorAPI from '../../api/enumeratorAPI'
 import MaterialTable from 'material-table'
-import moment from 'moment'
 import NewEnumerator from './NewEnumerator'
 
 export default function Enumerators() {
@@ -73,7 +72,7 @@ export default function Enumerators() {
                                 {
                                     title: 'Full Name', render: (data) => `${data.firstName} ${data.middleName} ${data.lastName}`,
                                     customFilterAndSearch: (term, rowData) => {
-                                        return (`${rowData.firstName} ${rowData.middleName} ${rowData.lastName}`).indexOf(term) != -1
+                                        return (`${rowData.firstName} ${rowData.middleName} ${rowData.lastName}`).indexOf(term) !== -1
                                     }
                                 },
                                 { title: 'Phone Number', field: 'phoneNumber', emptyValue: 'no val' },

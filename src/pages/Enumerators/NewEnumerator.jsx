@@ -54,7 +54,6 @@ export default function NewTeam({ show, setShow, setEnumerators }) {
             show={show}
             size="xl"
             onHide={handleClose}
-            onHide={handleClose}
             backdrop="static"
             keyboard={false}
         >

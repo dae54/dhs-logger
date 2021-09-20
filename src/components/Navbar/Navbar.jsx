@@ -1,19 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { AuthContext, useAuth } from '../../Context/AuthContext'
-// import axios from 'axios'
+import { useAuth } from '../../Context/AuthContext'
 import female from '../../assets/images/female.png'
 
 import BreadCrumb from './BreadCrumb'
 export default function Navbar() {
-    const { state, dispatch } = React.useContext(AuthContext)
     const { authData, signOut } = useAuth()
 
-    let setIsAuthenticated = status => dispatch({ type: 'isAuthenticated', payload: status })
     let roleName = ''
-
-    // const hist = useHistory()
-    // console.log(state)
     let themecolor = 'gradient-green';
 
     switch (authData.role) {

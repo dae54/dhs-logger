@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import * as LoggerAPI from '../../api/loggerAPI'
-import { Bar, Line } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import TeamDetails from './teamDetails';
 import MaterialTable from 'material-table';
 

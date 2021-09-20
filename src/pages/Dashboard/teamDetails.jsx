@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as TeamsAPI from '../../api/teamsAPI'
 import * as LoggerAPI from '../../api/loggerAPI'
 import moment from 'moment'
-import { Bar, Line } from 'react-chartjs-2'
+import { Line } from 'react-chartjs-2'
 
 export default function TeamDetails() {
     const [loading, setLoading] = useState(true)
@@ -66,6 +66,7 @@ export default function TeamDetails() {
             console.log('going on')
             getTeamClusterInfo(activeTeam._id)
         }
+        // eslint-disable-next-line 
     }, [to, from, activeTeam])
 
     const data = {

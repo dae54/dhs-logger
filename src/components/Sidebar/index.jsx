@@ -2,12 +2,10 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 // import menu, { misc as op } from './index'
 import menu, { misc } from '../routes'
-// import logo from '../../assets/images/blue.png'
 
-import { AuthContext, useAuth } from '../../Context/AuthContext'
+import { useAuth } from '../../Context/AuthContext'
 
 export default function Sidebar(props) {
-    const { state } = React.useContext(AuthContext)
     const { authData } = useAuth()
 
     return (

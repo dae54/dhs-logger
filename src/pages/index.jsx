@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 import routes from '../components/routes'
 import RouteWrapper from '../components/RouteWrapper'
 // import NotFound from './Errors/NotFound'

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import * as UserAPI from '../../api/authAPI'
 
@@ -49,7 +49,6 @@ export default function NewUser({ show, setShow }) {
         <Modal
             show={show}
             size="lg"
-            onHide={handleClose}
             onHide={handleClose}
             backdrop="static"
             keyboard={false}

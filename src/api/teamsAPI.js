@@ -1,6 +1,6 @@
 import axios from './axiosConfig';
 
-import { parseError, parseResponse, resolve } from './resolve.js';
+import { parseError, parseResponse } from './resolve.js';
 
 export async function create(payload) {
     return await axios.post('/team', payload)
