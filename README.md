@@ -1,25 +1,52 @@
-# CHANGE REQUEST AND SUPPLY SYSTEM
+<h1 align="center">Welcome to DHS-LOGGER 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="#" target="_blank">
+    <img alt="License: ISC" src="https://img.shields.io/badge/License-ISC-yellow.svg" />
+  </a>
+  <a href="https://twitter.com/Kijacode" target="_blank">
+    <img alt="Twitter: DanielErnest54" src="https://img.shields.io/twitter/follow/DanielErnest54.svg?style=social" />
+  </a>
+</p>
 
-## HOW TO RUN THIS PROJECT
+> This is the backend service for agro-inputs assuarance supply chain system for both mobile app,web system and sms service .
 
-1. In the working directory, run command
+### 🏠 [Homepage](index.js)
 
-   `npm install` to install dependencies
+## Install
 
-2. Then run command
+```sh
+npm install
+```
 
-   `npm start` to start development server
+## Usage
 
-3. On your preffered browser, Open
+```sh
+npm start
+```
 
-   `localhost://3000`
+## Run tests
 
-4. Initial Credentials
-   login as admin::
+```sh
+npm run test
+```
 
-   - email: nsobya@gmail.com
-   - password: nsobya
+## Site URL
+[Long URL](https://compassionate-perlman-375e15.netlify.app/)
 
-## OTHER AVAILABLE SCRIPTS
 
-1. `npm run build` - build product in production mode
+[Shortened URL](https://bit.ly/3kpDkcR)
+
+## Author
+
+👤 **Daniel Ernest**
+
+* Twitter: [@DanielErnest54](https://twitter.com/DanielErnest54)
+* Github: [@dae54](https://github.com/dae54)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
