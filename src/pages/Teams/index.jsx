@@ -77,7 +77,7 @@ export default function Teams() {
                                 { title: 'Supervisor', field: 'cluster', render: (data) => renderFullName(data.supervisor) },
                                 { title: 'Member 1', field: 'member', render: (data) => renderFullName(data.members[0].memberId) },
                                 { title: 'Member 2', field: 'member', render: (data) => renderFullName(data.members[1].memberId) },
-                                // { title: 'Listed Households', field: 'listedHouseholds', },
+                                { title: 'Region', field: 'region', },
                                 // { title: 'Survey Date', field: 'surveyDate', render: (data) => `${moment(data.surveyDate).fromNow()} (${moment(data.surveyDate).format('DD MMM')})` },
                                 // { title: 'altitude', field: 'decodedGPS', render: (data) => data.decodedGPS.region },
                                 // { title: 'Region', field: 'decodedGPS', render: (data) => data.decodedGPS.region },

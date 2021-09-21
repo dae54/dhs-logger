@@ -104,6 +104,9 @@ export default function LogData() {
                             }}
                             isLoading={status.code === 0}
                             title='Registered Clusters'
+                            options={{
+                                pageSize: 10,
+                            }}
                             columns={[
                                 { title: 'Cluster', field: 'cluster', width: '100' },
                                 { title: 'Enumerator', field: 'enumerator', },
@@ -117,7 +120,7 @@ export default function LogData() {
                                 { title: 'Listed Households', field: 'listedHouseholds', },
                                 { title: 'Survey Date', field: 'surveyDate', render: (data) => `${moment(data.surveyDate).fromNow()} (${moment(data.surveyDate).format('DD MMM')})` },
                                 // { title: 'altitude', field: 'decodedGPS', render: (data) => data.decodedGPS.region },
-                                { title: 'Region', field: 'decodedGPS', render: (data) => data.decodedGPS.region },
+                                { title: 'Region', field: 'team', render: (data) => data.team.region },
                                 { title: 'Registered At', field: 'createdAt', render: (data) => moment(data.createdAt).fromNow() },
                                 // { title: 'surveyDate', field: 'birthCity', lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' } }
                             ]}
