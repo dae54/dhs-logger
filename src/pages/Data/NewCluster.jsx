@@ -55,13 +55,6 @@ export default function NewCluster({ show, setShow }) {
                 longitude: lngRef.current.value,
                 altitude: altRef.current.value,
             },
-            decodedGPS: {
-                region: regionRef.current.value,
-                // district: districtRef.current.value,
-                // ward: wardRef.current.value,
-                // street: streetRef.current.value,
-                other: othersRef.current.value,
-            }
         }
         setStatus({ code: 0, message: '' })
 
@@ -194,19 +187,19 @@ export default function NewCluster({ show, setShow }) {
                         </div>
                         <div class="form-group col-md-2">
                             <label >-</label>
-                            <button className='form-control btn btn-default px-5' type="button" onClick={getLocationAddress}>Decode</button>
+                            <button className='form-control btn btn-default px-5' disabled type="button" onClick={getLocationAddress}>Decode</button>
                         </div>
 
                         <div className='form-group col-md-12'></div>
 
-                        <div class="form-group col-md-2">
+                        {/* <div class="form-group col-md-2">
                             <label >Region:</label>
                             <input ref={regionRef} class="form-control" />
                         </div>
                         <div class="form-group col-md-8">
                             <label >Other:</label>
                             <input ref={othersRef} class="form-control" />
-                        </div>
+                        </div> */}
                     </div>
                     {status.message &&
                         <div className='alert alert-warning text-center'>{status.message}</div>
