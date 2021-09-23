@@ -14,8 +14,8 @@ export default function TeamDetails({ teamVSClusters }) {
     const [labels, setLabels] = useState([])
 
     // const [from, setFrom] = useState(moment().subtract(1, 'weeks').startOf('isoWeek').format('YYYY-MM-DD'))
-    const [from, setFrom] = useState(moment("20210913", "YYYYMMDD").format('YYYY-MM-DD'))
-    const [to, setTo] = useState(moment().format('YYYY-MM-DD'))
+    const [from] = useState(moment("20210913", "YYYYMMDD").format('YYYY-MM-DD'))
+    const [to] = useState(moment().format('YYYY-MM-DD'))
 
     async function getTeamClusterInfo(teamId) {
         console.log(teamId)

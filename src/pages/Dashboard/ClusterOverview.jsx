@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Line, PolarArea } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import * as LoggerAPI from '../../api/loggerAPI'
 
 export default function ClusterOverview({ teamVSClusters, setTeamVSClusters }) {
@@ -19,6 +19,7 @@ export default function ClusterOverview({ teamVSClusters, setTeamVSClusters }) {
 
     useEffect(() => {
         getTeamVsClusters()
+        // eslint-disable-next-line
     }, [])
 
     useEffect(() => {

@@ -32,9 +32,9 @@ export default function NewCluster({ show, setShow }) {
     const latRef = useRef()
     const lngRef = useRef()
     const altRef = useRef()
-    const regionRef = useRef()
+    // const regionRef = useRef()
     const teamNumberRef = useRef()
-    const othersRef = useRef()
+    // const othersRef = useRef()
 
     const formRef = useRef()
 

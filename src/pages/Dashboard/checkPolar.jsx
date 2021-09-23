@@ -1,5 +1,5 @@
 import React from 'react'
-import { PolarArea, Pie, Radar } from 'react-chartjs-2'
+import { Radar } from 'react-chartjs-2'
 
 export default function CheckPolar({ teamVSClusters, labels, values, activeTeam }) {
 
