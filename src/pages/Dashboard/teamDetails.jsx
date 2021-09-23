@@ -3,8 +3,9 @@ import * as TeamsAPI from '../../api/teamsAPI'
 import * as LoggerAPI from '../../api/loggerAPI'
 import moment from 'moment'
 import { Line } from 'react-chartjs-2'
+import CheckPolar from './checkPolar'
 
-export default function TeamDetails() {
+export default function TeamDetails({ teamVSClusters }) {
     const [loading, setLoading] = useState(true)
     const [teamNames, setTeamNames] = useState([])
     const [activeTeam, setActiveTeam] = useState('')
@@ -12,7 +13,8 @@ export default function TeamDetails() {
     const [values, setValues] = useState([])
     const [labels, setLabels] = useState([])
 
-    const [from, setFrom] = useState(moment().subtract(1, 'weeks').startOf('isoWeek').format('YYYY-MM-DD'))
+    // const [from, setFrom] = useState(moment().subtract(1, 'weeks').startOf('isoWeek').format('YYYY-MM-DD'))
+    const [from, setFrom] = useState(moment("20210913", "YYYYMMDD").format('YYYY-MM-DD'))
     const [to, setTo] = useState(moment().format('YYYY-MM-DD'))
 
     async function getTeamClusterInfo(teamId) {
@@ -98,28 +100,28 @@ export default function TeamDetails() {
     };
 
     return (
-        <div className='card'>
-            <div className="card-header d-flex justify-content-between p-1">
-                <span style={{ alignSelf: 'center' }}>Team # {activeTeam.teamNumber}  Cluster Progress Chart</span>
-                <div className='d-flex' style={{ alignItems: 'center' }}>
-                    Change Team Number
-                    {loading ?
-                        <span className='spinner-border spinner-border-sm p-2 m-2'></span>
-                        :
-                        <span className='ml-2' >
-                            <select className='form-control' value={activeTeam._id} onChange={(e) => setActiveTeam(teamNames.find(team => team._id === e.target.value))}>
-                                {teamNames.map(team => {
-                                    return (
-                                        <option value={team._id}>{team.teamNumber}</option>
-                                    )
-                                })}
-                            </select>
-                        </span>
-                    }
-                </div>
-            </div>
-            <div className="card-body p-1">
-                {/* <div className="d-flex justify-content-between">
+        <div className="row">
+            <div className="col-8">
+                <div className='card'>
+                    <div className="card-header d-flex justify-content-between py-1">
+                        {/* <span style={{ alignSelf: 'center' }}>Team # {activeTeam.teamNumber}  Cluster Progress Chart</span> */}
+                        <span className='m-0 p-0' style={{ fontSiz: 20, fontWeight: 'bold', alignSelf: 'center' }}>Team's Performance (# {activeTeam.teamNumber}-{activeTeam.region})</span>
+
+                        <div className='d-flex' style={{ alignItems: 'center' }}>
+                            Select Team Number
+                            {loading ?
+                                <span className='spinner-border spinner-border-sm p-2 m-2'></span>
+                                :
+                                <span className='ml-2' >
+                                    <select className='form-control' value={activeTeam._id} onChange={(e) => setActiveTeam(teamNames.find(team => team._id === e.target.value))}>
+                                        {teamNames.map(team => <option value={team._id}>{`#${team.teamNumber} (${team.region})`}</option>)}
+                                    </select>
+                                </span>
+                            }
+                        </div>
+                    </div>
+                    <div className="card-body p-1">
+                        {/* <div className="d-flex justify-content-between">
                     <div>
                         <span className="">Member 1</span> <br />
                         <p className="m-0">Daniel Ernest (0626325152)</p>
@@ -133,64 +135,72 @@ export default function TeamDetails() {
                         <p className="m-0">Daniel Ernest (0626325152)</p>
                     </div>
                 </div> */}
-                <div className='d-flex justify-content-between'>
-                    <div class="form-row w-100">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail">Choose Start Date :</label>
-                            <input type='date' value={from} onChange={e => setFrom(e.target.value)} className='form-control' max={moment().format('YYYY-MM-DD')} />
+                        {/* <div className='d-flex justify-content-between'>
+                            <div class="form-row w-10">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail">Start :</label>
+                                    <input type='date' value={from} onChange={e => setFrom(e.target.value)} className='form-control' max={moment().format('YYYY-MM-DD')} />
+                                </div>
+                                <div class="form-group col-md-6 p-0">
+                                    <label for="inputEmail">End:</label>
+                                    <input type='date' value={to} onChange={e => setTo(e.target.value)} max={moment().format('YYYY-MM-DD')} className='form-control' />
+                                </div>
+                            </div>
+                        </div> */}
+                        <div className="" style={{ height: '40vh' }}>
+                            <Line
+                                // type='area'
+                                width={100}
+                                height={50}
+                                options={{
+                                    maintainAspectRatio: false,
+                                    label: {
+                                        show: false
+                                    },
+                                    scales: {
+                                        x: {
+                                            display: true,
+                                            title: {
+                                                display: true,
+                                                text: 'Cluster Survey Date',
+                                                font: {
+                                                    size: 14,
+                                                },
+                                            }
+                                        },
+                                        y: {
+                                            display: true,
+                                            title: {
+                                                display: true,
+                                                text: 'Clusters Submitted',
+                                                font: {
+                                                    size: 14,
+                                                },
+                                            },
+                                            // min: 1,
+                                            max: Math.max(...values) + 1
+                                        }
+                                    },
+                                    plugins: {
+                                        legend: {
+                                            display: false,
+                                        }
+                                    },
+                                    // elements.line.tension = smooth ? 0.4 : 0;
+                                    elements: {
+                                        line: {
+                                            tension: .3
+                                        }
+                                    }
+                                }}
+                                data={data} />
                         </div>
-                        <div class="form-group col-md-6 p-0">
-                            <label for="inputEmail">Choose End Date:</label>
-                            <input type='date' value={to} onChange={e => setTo(e.target.value)} max={moment().format('YYYY-MM-DD')} className='form-control' />
-                        </div>
+
                     </div>
                 </div>
-                <div className="" style={{ height: '40vh' }}>
-                    <Line type='area'
-                        width={100}
-                        height={50}
-                        options={{
-                            maintainAspectRatio: false,
-                            label: {
-                                show: false
-                            },
-                            scales: {
-                                x: {
-                                    display: true,
-                                    title: {
-                                        display: true,
-                                        text: 'Cluster Survey Date',
-                                        font: {
-                                            size: 14,
-                                        },
-                                    }
-                                },
-                                y: {
-                                    display: true,
-                                    title: {
-                                        display: true,
-                                        text: 'Clusters Submitted',
-                                        font: {
-                                            size: 14,
-                                        },
-                                    }
-                                }
-                            },
-                            plugins: {
-                                legend: {
-                                    display: false,
-                                }
-                            },
-                            // elements.line.tension = smooth ? 0.4 : 0;
-                            elements: {
-                                line: {
-                                    tension: 0.4
-                                }
-                            }
-                        }}
-                        data={data} />
-                </div>
-
+            </div>
+            <div className="col-4">
+                <CheckPolar values={values} labels={labels} teamVSClusters={teamVSClusters} activeTeam={activeTeam} />
             </div>
         </div>
     )

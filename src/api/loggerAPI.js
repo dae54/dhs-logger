@@ -20,6 +20,12 @@ export async function getAll() {
         .catch(error => { throw parseError(error) })
 }
 
+export async function getLastEntryTime() {
+    return await axios.get('/logger/getLastEntryTime')
+        .then(response => parseResponse(response))
+        .catch(error => { throw parseError(error) })
+}
+
 export async function getTeamVsClusters() {
     return await axios.get('/logger/getTeamVsClusters')
         .then(response => parseResponse(response))
