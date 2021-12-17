@@ -4,7 +4,7 @@ import { useAuth } from '../../Context/AuthContext'
 
 export default function Login({ setAccountStatus }) {
     const { signIn } = useAuth()
-
+    let dssd = 'danieel'
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
@@ -34,7 +34,7 @@ export default function Login({ setAccountStatus }) {
                             <div className="row justify-content-center">
                                 <div className="col-xl-5 col-lg-6 col-md-8 px-5">
                                     <h3 className="text-white text-dark">Welcome to DHS-LOGGER!</h3>
-                                    <h1 className="text-white text-dark">Login Page</h1>
+                                    <h1 className="text-white text-dark">Login Page. Dont miss it out</h1>
                                 </div>
                             </div>
                         </div>
